@@ -3,13 +3,17 @@ import React from 'react'
 const Suggestions = (props) => {
   console.log(props);
   const options = props.results.map(r => (
-    <div>
-    <li key={r.uuid}>
-      {r.suggestion}
-    </li>
-    </div>
+
+           <li key={r.uuid}>
+                  {r.suggestion}
+            </li>
+
+
+
   ))
-  return <ul>{options}</ul>
+  return <span className='suggestWrapper' >
+        <ul className='suggestAutocomplete'>{options}</ul>
+      </span>
 }
 
 export default Suggestions

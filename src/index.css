@@ -12,3 +12,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.autoCompleteInput {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 200px;
+}
+
+ul.suggestAutocomplete {
+  position: absolute; /* относительно чего позиционирование? */
+  display: block;
+  list-style-type: none;
+  margin-top: 30px;
+  margin-bottom: 1 em; /* почему em и зачем вообще */
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0px; /* повтор */
+  top: 10px; /* почему именно это значение.
+   выглядит так что значения просто подогнаны так чтобы выглядело как надо */
+}
+
+
+.suggestAutocomplete > li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif; /* тут был бы вопрос про inherit */
+  border-bottom: 1px solid #ccc;
+}
+
+.suggestAutocomplete > li:last-child {
+  border: none;
+}
+
+.suggestAutocomplete > li {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 200px;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+.suggestAutocomplete > li:hover {
+  font-size: 30px;
+  background: #FFF7AA;
+}
+
+/* что будет с компонентом если его расположить не в начале страницы? */
