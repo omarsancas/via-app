@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Search from './components/Search'
 
 class App extends Component {
   render() {
@@ -35,10 +36,7 @@ class App extends Component {
               <a className="nav-link disabled" href="#">Disabled</a>
             </li>
           </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          <Search />
         </div>
         </nav>
       </div>
