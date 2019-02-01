@@ -62,7 +62,7 @@ class Search extends Component {
 
   handleKeyPress = e => {
     if (e.key === 'Enter' && this.getFiltered(e.target.value).length === 1) {
-      this.proceedAutoComplete(this.getFiltered(e.target.value)); // стоило закэшировать результат this.getFiltered
+      this.proceedAutoComplete(this.getFiltered(e.target.value)); //
     }
   }
 
@@ -79,17 +79,8 @@ class Search extends Component {
           ref={input => this.search = input}
           onChange={this.handleInputChange}/>
           <span className='suggestWrapper'>
-          <ul className='suggestAutocomplete'>
-          {this.state.results.map((r) => {
-            return <li
-                    key={r.uuid}
-                    onClick={this.selectSuggestion}
-                    >
-                      {r.suggestion}
-                    </li>
-          })}
-        </ul>
-      </span>
+            <Suggestions results={this.state.results} />
+          </span>
       </form>
     )
   }

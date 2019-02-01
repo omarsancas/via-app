@@ -11,9 +11,7 @@ const Suggestions = (props) => {
 
 
   ))
-  return <span className='suggestWrapper' >
-        <ul className='suggestAutocomplete'>{options}</ul>
-      </span>
+  return <ul>{options}</ul>  
 }
 
 export default Suggestions
