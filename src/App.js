@@ -29,6 +29,7 @@ class App extends Component {
           <div><i className="fa fa-user"></i></div>
         </div>
         </nav>
+        <h1><Search selected={this.props.selected} /> </h1>
       </div>
     );
   }

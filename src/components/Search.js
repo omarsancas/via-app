@@ -11,9 +11,10 @@ class Search extends Component {
     error: false,
     query: '',
     results: [],
-    search: ''
+    search: '',
+    isLoading: false
   }
-
+  //function that calls the data work API
   getInfo = () => {
     axios.get(`${API_URL}?contains=${this.state.query}`)
       .then(({ data }) => {
@@ -34,13 +35,14 @@ class Search extends Component {
           filterBy={['suggestion']}
           minLength={2}
           onSearch={this._handleSearch}
-          placeholder="Search for job skills."
+          placeholder="Search for job skills..."
           options={this.state.results}
+          onClick={this._onClear}
           renderMenuItemChildren={(option, props) => (
             <div>{option.suggestion}</div>
           )}
-          selected={this.props.selected}
-        />
+          selected={this.state.selected}
+        />        
       </div>
 
     )
@@ -58,6 +60,12 @@ class Search extends Component {
       } else if (!this.state.query) {
         // this.hideDropdown()
       }
+    })
+  }
+
+  _onClear = (query) => {
+    this.setState({
+      results: []
     })
   }
 }
