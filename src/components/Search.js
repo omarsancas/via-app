@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import '../index.css';
 import Suggestions from './Suggestions'
+import Autocomplete from '../../node_modules/react-autocomplete'
+import {AsyncTypeahead} from 'react-bootstrap-typeahead';
 const API_URL = 'http://api.dataatwork.org/v1/jobs/autocomplete'
 
 class Search extends Component {
   state = {
     error: false,
     query: '',
-    results: []
+    results: [],
+    search: ''
   }
 
   getInfo = () => {
@@ -21,9 +24,31 @@ class Search extends Component {
       .catch(() => this.setState({ error: true }))
   }
 
-  handleInputChange = () => {
+
+  render() {
+    return (
+      <div>
+        <AsyncTypeahead
+          {...this.state}
+          labelKey="suggestion"
+          filterBy={['suggestion']}
+          minLength={2}
+          onSearch={this._handleSearch}
+          placeholder="Search for job skills."
+          options={this.state.results}
+          renderMenuItemChildren={(option, props) => (
+            <div>{option.suggestion}</div>
+          )}
+          selected={this.props.selected}
+        />
+      </div>
+
+    )
+  }
+  //function to search the coincidences
+  _handleSearch = (query) => {
     this.setState({
-      query: this.search.value
+      query: query
     }, () => {
       if (this.state.query && this.state.query.length > 1) {
         // this.showDropdown()
@@ -34,55 +59,6 @@ class Search extends Component {
         // this.hideDropdown()
       }
     })
-  }
-
-
-
-  selectSuggestion = e => {
-    e.preventDefault();
-    const text = e.currentTarget.textContent;
-    this.proceedAutoComplete(text);
-  };
-
-  proceedAutoComplete(text) {
-    //alert(text);
-    this.textInput.value = text;
-    this.setState({ show: false });
-    this.props.onAutocomplete(text);
-  }
-
-  handleClick = e => {
-    e.preventDefault();
-    this.setState({ show: !this.state.show });
-  }
-
-  getFiltered(value){
-    return this.props.items.filter(i => i.toLowerCase().includes(value.toLowerCase()))
-  }
-
-  handleKeyPress = e => {
-    if (e.key === 'Enter' && this.getFiltered(e.target.value).length === 1) {
-      this.proceedAutoComplete(this.getFiltered(e.target.value)); //
-    }
-  }
-
-  render() {
-    const showSuggest = {
-      display: this.state.show ? 'block' : 'none',
-    }
-    return (
-      <form className="form-inline my-2 my-lg-0">
-        <input className="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          ref={input => this.search = input}
-          onChange={this.handleInputChange}/>
-          <span className='suggestWrapper'>
-            <Suggestions results={this.state.results} />
-          </span>
-      </form>
-    )
   }
 }
 
