@@ -4,7 +4,7 @@ import '../index.css';
 import Suggestions from './Suggestions'
 import Autocomplete from '../../node_modules/react-autocomplete'
 import {AsyncTypeahead} from 'react-bootstrap-typeahead';
-const API_URL = 'http://api.dataatwork.org/v1/jobs/autocomplete'
+const API_URL = 'https://api.dataatwork.org/v1/jobs/autocomplete'
 
 class Search extends Component {
   state = {
@@ -42,7 +42,7 @@ class Search extends Component {
             <div>{option.suggestion}</div>
           )}
           selected={this.state.selected}
-        />        
+        />
       </div>
 
     )
