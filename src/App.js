@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Search from './components/Search'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faIgloo } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faIgloo)
 
 class App extends Component {
   render() {
@@ -19,7 +23,9 @@ class App extends Component {
           <ul className="navbar-nav mr-auto">
           </ul>
           <Search />
-
+          <div><i className="fa fa-bell"></i></div>
+          <div><i className="fa fa-envelope"></i></div>
+          <div><i className="fa fa-user"></i></div>
         </div>
         </nav>
       </div>

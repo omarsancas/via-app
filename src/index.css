@@ -13,6 +13,21 @@ code {
     monospace;
 }
 
+.fa-bell {
+  color: white;
+}
+
+.fa-envelope{
+  color: white;
+  margin-left: 20px;
+}
+
+.fa-user{
+  color: white;
+  margin-left: 20px;
+}
+
+
 
 .autoCompleteInput {
   font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
